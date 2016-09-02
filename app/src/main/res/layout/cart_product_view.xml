@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardUseCompatPadding="true"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="7dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="8sp"
+        android:paddingRight="8sp"
+        android:paddingTop="8sp"
+        android:paddingBottom="8sp">
+
+        <RelativeLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layerType="software"
+                android:id="@+id/dish_image"
+                android:src="@drawable/tikka"/>
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/veg"
+                android:id="@+id/dish_isveg"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Paneer Tikka"
+                    android:id="@+id/cart_product_name"
+                    android:textStyle="bold"
+                    android:textColor="#9C27B0"
+                    android:textSize="18sp"
+                    android:layout_marginTop="2sp"
+                    android:layout_marginBottom="2sp"
+                    android:layout_marginLeft="2sp" />
+                <ImageView
+                    android:layout_width="25sp"
+                    android:layout_height="25sp"
+                    android:src="@drawable/close"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:text="Paneer tikka is an Indian dish made from chunks... "
+                android:layout_marginLeft="2sp"
+                android:layout_marginTop="2sp"
+                android:layout_marginBottom="2sp"
+                android:layout_marginRight="2sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AddOn: [Pepsi, Extra Toppings, shit]"
+                android:textColor="#000"
+                android:layout_margin="4sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="3sp">
+
+                <ImageView
+                    android:layout_marginTop="6dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:clickable="true"
+                    android:id="@+id/add_icon"
+                    android:tint="#c9343e"
+                    android:src="@drawable/remove"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:textSize="30dp"
+                    android:id="@+id/cart_product_quantity"
+                    android:textColor="#000000"
+                    android:text="0"/>
+                <ImageView
+                    android:layout_marginTop="6dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:clickable="true"
+                    android:tint="#4CAF50"
+                    android:id="@+id/remove_icon"
+                    android:src="@drawable/add"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:text="Rs.86"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

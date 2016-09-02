@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:tag="sticky"
+    app:cardBackgroundColor="#ccc"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="yoo yoyo bto"
+        android:padding="5dp"
+        android:id="@+id/sticky_menu_text"
+        />
+</android.support.v7.widget.CardView>
