@@ -59,8 +59,9 @@
                 android:layout_height="30dp"
                 android:clickable="true"
                 android:id="@+id/remove_item"
+                android:tint="#c9343e"
                 android:onClick="customize_remove"
-                android:background="@drawable/ic_remove_circle_outline_black_24dp"/>
+                android:src="@drawable/ic_remove_circle_outline_black_24dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -74,9 +75,10 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:clickable="true"
+                android:tint="#4CAF50"
                 android:onClick="customize"
                 android:id="@+id/add_item"
-                android:background="@drawable/ic_add_circle_outline_black_24dp"/>
+                android:src="@drawable/ic_add_circle_outline_black_24dp"/>
         </LinearLayout>
 
     </LinearLayout>

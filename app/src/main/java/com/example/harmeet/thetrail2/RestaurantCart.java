@@ -64,7 +64,10 @@ public class RestaurantCart {
 
         for(int i=0;i<cartItems.size();i++){
             if(cartItems.get(i).productId == productId && cartItems.get(i).optionsId.equals(optionsId)){
-                cartItems.remove(i);
+                if(cartItems.get(i).quantity>1)
+                    cartItems.get(i).quantity--;
+                else
+                    cartItems.remove(i);
             }
         }
     }

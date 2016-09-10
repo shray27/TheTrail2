@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -36,12 +37,29 @@ public class CartProductRecyclerViewAdapter extends RecyclerView.Adapter<CartPro
         return mCart.cartItems.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
+
+
         TextView productName, productQuantity;
+        ImageView productRemove;
         public ViewHolder(View itemView) {
             super(itemView);
             productName = (TextView)  itemView.findViewById(R.id.cart_product_name);
             productQuantity = (TextView) itemView.findViewById(R.id.cart_product_quantity);
+            productRemove = (ImageView) itemView.findViewById(R.id.remove_cart_product);
+            productRemove.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            removeAt(getAdapterPosition());
+        }
+    }
+
+    public void removeAt(int position) {
+        mCart.cartItems.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, mCart.cartItems.size());
     }
 }

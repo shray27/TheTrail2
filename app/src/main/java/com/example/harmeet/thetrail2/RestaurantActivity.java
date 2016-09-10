@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,7 +22,6 @@ import com.example.harmeet.thetrail2.Utilities.Utility;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 
 public class RestaurantActivity extends AppCompatActivity implements RestaurantCustomizeOptionDialogFragment.ConfirmClicked,
         RestaurantCustomizeDialogFragment.AddToCartClicked,
@@ -47,6 +48,22 @@ public class RestaurantActivity extends AppCompatActivity implements RestaurantC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant);
         new loadMenu().execute("5");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_restaurant, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.action_services) {
+            InstantServiceDialogFragment instantServiceDialogFragment = new InstantServiceDialogFragment();
+            instantServiceDialogFragment.show(getFragmentManager(), "instant service");
+        }
+        return true;
     }
 
     public void initToolbar(){
@@ -151,11 +168,35 @@ public class RestaurantActivity extends AppCompatActivity implements RestaurantC
         RestaurantBean.Product product = (RestaurantBean.Product) fView.getTag();
         currentProductId = product.productId;
         currentCustomization.clear();
+        currentQuantityView = (TextView)fView.findViewById(R.id.dish_quantity);
         if(product.isCustomizable){
+            int variations = 0, quantity=0;
+            for(int i=0;i<cart.cartItems.size();i++){
+                if(currentProductId == cart.cartItems.get(i).productId){
+                    variations++;
+                    quantity += cart.cartItems.get(i).quantity;
+                }
+            }
+
+            if(variations == 1 && quantity>0){
+                for(int i=0;i<cart.cartItems.size();i++){
+                    if(currentProductId == cart.cartItems.get(i).productId){
+                        if(quantity==1)
+                            cart.cartItems.remove(i);
+                        else
+                            cart.cartItems.get(i).quantity--;
+                        updateReduceQuantity();
+                    }
+                }
+            }
+
+            Log.d("variations",variations+"");
 
         }
         else {
-
+            HashSet<Integer> options = new HashSet<Integer>();
+            cart.removeProduct(currentProductId, options);
+            updateReduceQuantity();
         }
     }
 
@@ -198,6 +239,14 @@ public class RestaurantActivity extends AppCompatActivity implements RestaurantC
         int quantity = Integer.parseInt((currentQuantityView).getText().toString());
         quantity++;
         (currentQuantityView).setText(quantity + "");
+    }
+
+    public void updateReduceQuantity(){
+        int quantity = Integer.parseInt((currentQuantityView).getText().toString());
+        if(quantity>0) {
+            quantity--;
+            (currentQuantityView).setText(quantity + "");
+        }
     }
 
     public RestaurantCart getCart(){
