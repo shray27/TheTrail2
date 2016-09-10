@@ -63,6 +63,7 @@
                 <ImageView
                     android:layout_width="25sp"
                     android:layout_height="25sp"
+                    android:id="@+id/remove_cart_product"
                     android:src="@drawable/close"/>
             </LinearLayout>
 
@@ -93,7 +94,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:clickable="true"
-                    android:id="@+id/add_icon"
+                    android:id="@+id/remove_icon"
                     android:tint="#c9343e"
                     android:src="@drawable/remove"/>
 
@@ -112,7 +113,7 @@
                     android:layout_height="30dp"
                     android:clickable="true"
                     android:tint="#4CAF50"
-                    android:id="@+id/remove_icon"
+                    android:id="@+id/add_icon"
                     android:src="@drawable/add"/>
                 <View
                     android:layout_width="0dp"
